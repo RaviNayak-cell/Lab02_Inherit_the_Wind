@@ -1,13 +1,16 @@
 import java.util.Calendar;
 import java.util.Date;
-public class Person {
-    private String ID; // should never change sequence of digits
+
+public class Person
+{
+    private String ID;
     private String firstName;
     private String lastName;
-    private String title;  // a prefix: Mr. Mrs. Ms, Prof. Dr. Hon. Etc.
-    private int YOB; // Year of birth  // Range should be 1940 - 2000
+    private String title;
+    private int YOB;
 
-    public Person(String ID, String firstName, String lastName, String title, int YOB) { // Constructor
+    public Person(String ID, String firstName, String lastName, String title, int YOB)
+    {
         this.ID = ID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -17,10 +20,6 @@ public class Person {
 
     public String getID() {
         return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
     }
 
     public String getFirstName() {
@@ -55,25 +54,29 @@ public class Person {
         this.YOB = YOB;
     }
 
-    public String getFullName() {
-        return this.firstName + " " + this.lastName;
+    public String fullName()
+    {
+        return firstName + " " + lastName;
     }
 
-    public String getFormalName() {
-        return this.title + " " + this.firstName + " " + this.lastName;
+    public String formalName()
+    {
+        return title + " " + fullName();
     }
 
-    public String toCSVDataRecord() {
-        return this.ID + ", " + this.firstName + ", " + this.lastName + ", " + this.title + ", " + this.YOB;
-    }
-
-    public int getAge() {
+    public int getAge()
+    {
         int year = Calendar.getInstance().get(Calendar.YEAR);
         return (year - YOB);
     }
 
-    public int getAge(int year) {
+    public int getAge(int year)
+    {
         return (year - YOB);
+    }
+
+    public String toCSVDataRecord() {
+        return ID + ", " + firstName + ", " + lastName + ", " + title + ", " + YOB;
     }
 
     @Override
@@ -85,6 +88,7 @@ public class Person {
                 ", title='" + title + '\'' +
                 ", YOB=" + YOB +
                 '}';
-
     }
+
+
 }
