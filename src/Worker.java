@@ -1,10 +1,12 @@
+import org.junit.jupiter.api.BeforeEach;
+
 public class Worker extends Person {
 
     private double hourlyPayRate;
 
-    public Worker(String ID, String firstName, String lastName, String title, int YOB) {
+    public Worker(String ID, String firstName, String lastName, String title, int YOB, double hourlyPayRate) {
         super(ID, firstName, lastName, title, YOB);
-    }
+        this.hourlyPayRate = hourlyPayRate;
 
     public double getHourlyPayRate()
     {
@@ -18,8 +20,8 @@ public class Worker extends Person {
         if (hoursWorked > 40)
         {
             overtime =  (hoursWorked - 40) * (hourlyPayRate * 1.5);
-            hoursWorked = 40;
             regular = hoursWorked * hourlyPayRate;
+            hoursWorked = 40;
             return overtime + regular;
         }
         else
@@ -48,3 +50,4 @@ public class Worker extends Person {
     }
 
 }
+
